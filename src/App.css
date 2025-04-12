@@ -1,0 +1,66 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  font-family: "Red Hat Display", sans-serif;
+  text-align: center;
+}
+
+.app-background {  
+  background-image: url("../public/Background.png");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  z-index: 0  ;
+}
+
+
+header {
+  background-color: #3D1F41;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-logo {
+  height: 50px;
+}
+
+.app-content {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  justify-items: center;
+  gap: 30px;
+  max-width: 1400px;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 768px) {
+ 
+  .app-content {
+    margin-top: 20px;
+    gap: 20px;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+ 
+ 
+  .app-content {
+    margin-top: 10px;
+    gap: 10px;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}

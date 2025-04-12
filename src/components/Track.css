@@ -1,0 +1,97 @@
+.Track {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    width: 100%;
+    height: 10vh;
+    border-bottom: #E64C7C 1px solid;
+    padding: 5%;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: flex-start;
+}
+
+.Track-information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 10px;
+    gap: 5px;
+    font-family: "Red Hat Display", sans-serif;
+    text-align: start;
+}
+
+.Track-information h3 {
+    font-size: 1rem;
+    color: white; 
+    font-weight: 700;
+    line-height: 1rem;
+    align-content: flex-start;
+}
+
+.Track-information p {
+    font-size: 0.875rem;
+    line-height: 0.875rem;
+    color: white;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.Track button {
+    background-color: #E64C7C;
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
+
+@media screen and (max-width: 768px) {
+    .Track {
+        padding: 5%;
+        height: 15vh;
+    }
+
+    .Track-information h3 {
+        font-size: 0.875rem;
+    }
+
+    .Track-information p {
+        font-size: 0.75rem;
+    }
+
+    .Track button {
+        font-size: 16px;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+    .Track {
+        padding: 5%;
+        height: 15vh;
+    }
+
+    .Track-information {
+        margin-left: 5px;
+        overflow: hidden; 
+    }
+
+    .Track-information h3 {
+        line-height: 0.875rem;
+    }
+
+    .Track-information p {
+        line-height: 0.75rem;
+
+    }
+
+    .Track button {
+        font-size: 15px;
+    }
+    
+}
