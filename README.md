@@ -1,4 +1,4 @@
-B# Jammming 🎵
+# Jammming 🎵
 
 Jammming is a React web application that allows users to search for songs, albums, or artists using the Spotify API, build custom playlists, and save them directly to their Spotify account.
 
