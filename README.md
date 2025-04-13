@@ -30,23 +30,13 @@ Jammming is a React web application that allows users to search for songs, album
    git clone https://github.com/your-username/jammming.git
    cd jammming
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
 2. Install dependencies:
+   npm install
 
-bash
-Copy
-Edit
-npm install
-Start the app:
+3. Start the app:
+   npm start
 
-bash
-Copy
-Edit
-npm start
-The app will open at http://localhost:3000/.
+4. The app will open at http://localhost:3000/.
 
 🔐 Spotify API Setup
 You’ll need to register a Spotify application to get your clientId.
