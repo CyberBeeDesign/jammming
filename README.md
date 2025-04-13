@@ -56,22 +56,23 @@ You’ll need to register a Spotify application to get your clientId.
 
 ## 📁 Project Structure
 
-``css
-src/
-│
-├── components/
-│   ├── SearchBar.js
-│   ├── SearchResults.js
-│   ├── Playlist.js
-│   ├── Track.js
-│   └── TrackList.js
-│
-├── utils/
-│   └── Spotify.js
-│
-├── App.js
-├── App.css
-└── index.js
+   ```css
+   src/
+   │
+   ├── components/
+   │   ├── SearchBar.js
+   │   ├── SearchResults.js
+   │   ├── Playlist.js
+   │   ├── Track.js
+   │   └── TrackList.js
+   │
+   ├── utils/
+   │   └── Spotify.js
+   │
+   ├── App.js
+   ├── App.css
+   └── index.js
+```
 
 ## 🧠 How It Works
 
