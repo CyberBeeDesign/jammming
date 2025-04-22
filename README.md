@@ -1,71 +1,94 @@
-# Getting Started with Create React App
+# Jammming 🎵
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Jammming is a React web application that allows users to search for songs, albums, or artists using the Spotify API, build custom playlists, and save them directly to their Spotify account.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- 🔍 Search the Spotify catalog for tracks by keyword
+- ➕ Add tracks to a custom playlist
+- 📝 Name and rename your playlist
+- 💾 Save the playlist directly to your Spotify account
+- 🎛 Seamless integration with Spotify's Web API
 
-### `npm start`
+## 🛠 Built With
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React
+- JavaScript (ES6+)
+- Spotify Web API
+- CSS Modules
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📸 Screenshots
 
-### `npm test`
+| Search | Playlist |
+|--------|----------|
+| ![Search Screenshot](./screenshots/search.png) | ![Playlist Screenshot](./screenshots/playlist.png) |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📦 Installation
 
-### `npm run build`
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/CyberBeeDesign/jammming.git
+   cd jammming
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
+   ```bash
+   npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start the app:
+   ```bash
+   npm start
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+6. The app will open at http://localhost:3000/.
 
-### `npm run eject`
+## 🔐 Spotify API Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+You’ll need to register a Spotify application to get your clientId.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Go to Spotify Developer Dashboard
+2. Log in and create a new application
+3. Set your redirect URI to:
+   ```arduino
+   http://localhost:3000/
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Copy your Client ID and paste it into Spotify.js:
+   ```js
+   const clientId = "your-client-id";
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📁 Project Structure
 
-## Learn More
+   ```css
+   src/
+   │
+   ├── components/
+   │   ├── SearchBar.js
+   │   ├── SearchResults.js
+   │   ├── Playlist.js
+   │   ├── Track.js
+   │   └── TrackList.js
+   │
+   ├── utils/
+   │   └── Spotify.js
+   │
+   ├── App.js
+   ├── App.css
+   └── index.js
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧠 How It Works
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- On page load, the app checks for an access token in the URL.
+- If absent, it redirects to Spotify's auth page.
+- Once authenticated, you can search for music.
+- Results are shown dynamically.
+- Add/remove tracks to/from a playlist.
+- Save the playlist directly to your Spotify account.
 
-### Code Splitting
+## ✅ Known Limitations
+- Token expires after 1 hour (refresh logic not yet implemented)
+- Playlist is saved as public (scope: playlist-modify-public)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# jammming
+## 🎯 Future Improvements
+- Add token refresh support
+- Allow saving private playlists
+- Add user feedback loading spinners
+- Show preview or track duration
