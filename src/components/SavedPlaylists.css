@@ -1,0 +1,184 @@
+.saved-playlist{
+  padding-bottom: 50px;
+}
+
+.edit-playlist{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 0 auto;
+  justify-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+}
+
+.SavedPlaylists {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  justify-items: center;
+  gap: 30px;
+  max-width: 1400px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  background-color: #3D1F41;
+  opacity: 0.7  ;
+  color: white;
+  border-radius: 8px;
+}
+
+.SavedPlaylists ul {
+  list-style: none;
+  padding: 0;
+}
+
+.SavedPlaylists input {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-size: 1rem;
+  font-family: "Red Hat Display", sans-serif;
+  align-content: flex-start;
+  padding-left: 10px;
+}
+
+
+.popup-message {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.playlist-item, 
+.edit-playlist {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  justify-items: center;
+  gap: 10px
+}
+
+.playlist-item span, 
+.edit-playlist span {
+  align-content: center;
+  justify-content: center;
+  margin:  auto;
+  margin-right: 20px
+
+}
+
+.edit-playlist button,
+.playlist-item button {
+    background-color: transparent;
+    font-family: "Red Hat Display", sans-serif;
+    font-size: 16px;
+    color: white;
+    width: fit-content;
+    border: white solid 1px;
+    border-radius: 30px;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+    margin: 0 auto;
+}
+
+.playlist-item button:hover, 
+.edit-playlist button:hover {
+  background-color: #E64C7C;
+  border: #E64C7C solid 1px;
+}
+
+
+.track-list {
+  display: flex;
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+.track-list li {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.track-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: 1px solid #E64C7C; ;
+}
+
+.remove-track-button {
+  background-color: #E64C7C;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  align-self: center;
+}
+
+.remove-track-button:hover {
+  color: darkred;
+}
+
+@media screen and (max-width: 768px) {
+
+  .saved-playlist{
+    margin: 20px;
+  }
+
+  
+.SavedPlaylists h2 {
+    font-size: 1.2rem;
+    margin: 15px;
+}
+
+.SavedPlaylists button {
+    font-size: 15px;
+}
+
+.playlist-item span {
+    font-size: 0.875rem;}
+}
+
+@media screen and (max-width: 480px) {
+  .playlist-item{
+    margin: 0 10px;
+    gap: 7px
+  }
+
+  .SavedPlaylists h2 {
+    font-size: 1rem;
+}
+
+  .saved-playlist{
+    margin: 10px
+  }
+
+
+  .SavedPlaylists button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .playlist-item span {
+    font-size: 14px;
+    margin: 0px
+  }
+
+  .saved-playlist input {
+    font-size: 14px;
+  }
+
+}

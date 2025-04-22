@@ -39,31 +39,29 @@ const Spotify = {
   // Search for tracks using the Spotify API
   async search(term) {
     const token = Spotify.getAccessToken();
-    if (!token) {
-      console.error("No access token found. Please authenticate first.");
-      return []; // Return empty array if there's no token
-    }
+    const endpoint = `https://api.spotify.com/v1/search?type=track&q=${term}&limit=50`;
+    const headers = { Authorization: `Bearer ${token}` };
 
-    const response = await fetch(
-      `https://api.spotify.com/v1/search?type=track&q=${term}`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
+    try {
+      const response = await fetch(endpoint, { headers });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
       }
-    );
-
-    const jsonResponse = await response.json();
-
-    if (!jsonResponse.tracks) {
+      const jsonResponse = await response.json();
+      if (!jsonResponse.tracks) {
+        return [];
+      }
+      return jsonResponse.tracks.items.map((track) => ({
+        id: track.id,
+        name: track.name,
+        artist: track.artists[0].name,
+        album: track.album.name,
+        uri: track.uri,
+      }));
+    } catch (error) {
+      console.error("Error fetching data from Spotify API:", error);
       return [];
     }
-
-    return jsonResponse.tracks.items.map((track) => ({
-      id: track.id,
-      name: track.name,
-      artist: track.artists[0].name,
-      album: track.album.name,
-      uri: track.uri,
-    }));
   }, 
 
 
@@ -101,6 +99,26 @@ const Spotify = {
     );
     return true;
   },
+};
+
+export const renamePlaylist = async (playlistId, newName) => {
+    const accessToken = Spotify.getAccessToken();
+    const headers = { Authorization: `Bearer ${accessToken}` };
+
+    try {
+        const response = await fetch(`https://api.spotify.com/v1/playlists/${playlistId}`, {
+            method: 'PUT',
+            headers: headers,
+            body: JSON.stringify({ name: newName })
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to rename playlist on Spotify');
+        }
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
 };
 
 export default Spotify;
