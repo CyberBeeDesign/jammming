@@ -1,5 +1,5 @@
 const clientId = "6c420209f1ce434792ffa638feb06c37"; // Your client id
-const redirectUri = "http://localhost:3000/"; // Update this when deploying
+const redirectUri = `${window.location.origin}/`
 let accessToken;
 
 const Spotify = {
