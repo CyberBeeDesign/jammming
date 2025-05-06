@@ -9,6 +9,7 @@ Jammming is a React web application that allows users to search for songs, album
 - 📝 Name and rename your playlist
 - 💾 Save the playlist directly to your Spotify account
 - 🎛 Seamless integration with Spotify's Web API
+- 🗂 Manage saved playlists locally with options to edit, delete, or expand playlists
 
 ## 🛠 Built With
 
@@ -16,12 +17,6 @@ Jammming is a React web application that allows users to search for songs, album
 - JavaScript (ES6+)
 - Spotify Web API
 - CSS Modules
-
-## 📸 Screenshots
-
-| Search | Playlist |
-|--------|----------|
-| ![Search Screenshot](./screenshots/search.png) | ![Playlist Screenshot](./screenshots/playlist.png) |
 
 ## 📦 Installation
 
