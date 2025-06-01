@@ -9,7 +9,9 @@
 }
 
 .app-background {  
-  background: linear-gradient(135deg, #ff00cc, #333399);
+  background: linear-gradient(-45deg, #ff00cc, #cc00ff, #6600ff, #000033);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
   background-size: cover;
   background-position: center;
   z-index: 0  ;
