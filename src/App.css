@@ -9,7 +9,7 @@
 }
 
 .app-background {  
-  background-image: url("../public/Background.png");
+  background: linear-gradient(135deg, #ff00cc, #333399);
   background-size: cover;
   background-position: center;
   z-index: 0  ;
