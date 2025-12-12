@@ -1,38 +1,50 @@
+
 const clientId = "6c420209f1ce434792ffa638feb06c37"; // Your client id
-const redirectUri = `${window.location.origin}/`
-let accessToken;
+const redirectUri = `${window.location.origin}/`;
+let accessToken = null;
 
 const Spotify = {
+
   getAccessToken() {
-    // If we already have an access token, return it
+    // 1. Check in-memory
     if (accessToken) {
       return accessToken;
     }
 
-    // Check the URL for an access token
+    // 2. Check localStorage
+    const storedToken = window.localStorage.getItem('spotify_access_token');
+    const storedExpiration = window.localStorage.getItem('spotify_token_expiration');
+    if (storedToken && storedExpiration && Number(storedExpiration) > Date.now()) {
+      accessToken = storedToken;
+      return accessToken;
+    }
+
+    // 3. Check URL for token
     const tokenMatch = window.location.href.match(/access_token=([^&]*)/);
     const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
-
-    // If we find the access token and its expiration, set it and schedule its expiration
     if (tokenMatch && expiresInMatch) {
       accessToken = tokenMatch[1];
       const expiresIn = Number(expiresInMatch[1]);
-
-      // Set a timeout to expire the token after the specified time
-      window.setTimeout(() => (accessToken = ""), expiresIn * 1000);
-
-      // Clean up the URL by removing the token and expiration parameters
-      window.history.pushState("Access Token", null, "/");
+      // Set expiration time in ms
+      const expirationTime = Date.now() + expiresIn * 1000;
+      window.localStorage.setItem('spotify_access_token', accessToken);
+      window.localStorage.setItem('spotify_token_expiration', expirationTime.toString());
+      window.setTimeout(() => {
+        accessToken = null;
+        window.localStorage.removeItem('spotify_access_token');
+        window.localStorage.removeItem('spotify_token_expiration');
+      }, expiresIn * 1000);
+      // Clean up the URL
+      window.history.pushState('Access Token', null, '/');
       return accessToken;
-    } 
-    
-    
+    }
+
+    // 4. If not found, redirect
     if (!accessToken) {
-      // If we don't have an access token, redirect to the Spotify authorization page
       const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
       window.location = authUrl;
     }
-      return null; // Return null since the token isn't available yet
+    return null;
   },
 
 
