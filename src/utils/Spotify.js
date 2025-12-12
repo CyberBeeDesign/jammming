@@ -3,14 +3,17 @@ const clientId = "6c420209f1ce434792ffa638feb06c37"; // Your client id
 const redirectUri = `${window.location.origin}/`;
 let accessToken = null;
 
-const Spotify = {
 
+const Spotify = {
   getAccessToken() {
+    // Prevent multiple redirects
+    if (window.__spotify_auth_in_progress) {
+      return null;
+    }
     // 1. Check in-memory
     if (accessToken) {
       return accessToken;
     }
-
     // 2. Check localStorage
     const storedToken = window.localStorage.getItem('spotify_access_token');
     const storedExpiration = window.localStorage.getItem('spotify_token_expiration');
@@ -18,7 +21,6 @@ const Spotify = {
       accessToken = storedToken;
       return accessToken;
     }
-
     // 3. Check URL for token
     const tokenMatch = window.location.href.match(/access_token=([^&]*)/);
     const expiresInMatch = window.location.href.match(/expires_in=([^&]*)/);
@@ -38,11 +40,15 @@ const Spotify = {
       window.history.pushState('Access Token', null, '/');
       return accessToken;
     }
-
-    // 4. If not found, redirect
+    // 4. If not found, show a message and redirect only once
     if (!accessToken) {
-      const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
-      window.location = authUrl;
+      window.__spotify_auth_in_progress = true;
+      // Show a message to the user before redirecting
+      document.body.innerHTML = '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;"><h2>Redirecting to Spotify for authentication...</h2><p>If you are stuck here, please check your popup blocker or try again later.</p></div>';
+      setTimeout(() => {
+        const authUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_uri=${redirectUri}`;
+        window.location = authUrl;
+      }, 1500);
     }
     return null;
   },
